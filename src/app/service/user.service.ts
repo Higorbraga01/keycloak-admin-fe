@@ -39,4 +39,8 @@ export class UserService {
     return of(this._user);
     //return this.http.get<any>(`${this.endpoint}/user`);
   }
+
+  buscarUsuariosPorRealm(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB`);
+  }
 }
