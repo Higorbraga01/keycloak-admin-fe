@@ -1,0 +1,40 @@
+<div class="l-main-grid">
+  <p-card styleClass="mt-3 p-reset">
+    <p-toolbar styleClass="mb-2">
+      <div class="p-toolbar-group-left">
+        <div class="mr-2">
+          <h1>filtro</h1>
+            <!-- <controle-ferias-filter
+            [setores]="_setores"
+            (formValue)="handleFilterEvent($event)">
+            </controle-ferias-filter> -->
+        </div>
+      </div>
+      <div class="p-toolbar-group-right">
+        <h1>botão</h1>
+        <!-- <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-file-excel"
+          (click)="exportExcel()"
+          [disabled]="_actionDisable"
+          class="p-button-success mr-2"
+          label="EXPORTAR DADOS EXCEL"
+          pTooltip="Exporta somente os dados exibidos na tabela"
+          tooltipPosition="bottom"
+        ></button> -->
+      </div>
+    </p-toolbar>
+
+    <!-- <controle-ferias-switch
+    *ngIf="_showTable === false">
+    </controle-ferias-switch>
+    <controle-ferias-table
+    *ngIf="_showTable === true"
+    [data]="data"
+    > -->
+    <!-- </controle-ferias-table> -->
+    <app-usuario-table></app-usuario-table>
+  </p-card>
+</div>

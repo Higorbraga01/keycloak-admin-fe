@@ -1,0 +1,83 @@
+<section class="consulta-container">
+    <!-- <header>
+        <div class="consulta-container__header">
+            <div class="l-main-grid">
+                <div class="consulta-container__title-wrapper col-12 xl:col-10 xl:offset-1 mb-3 flex align-items-center">
+                    <h2 class="consulta-container__title ml-3">Funções 
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </header> -->
+    <header>
+        <div class="consulta-container__header">
+            <div class="grid l-main-grid">
+                <div class="consulta-container__title-wrapper col-12 xl-10 xl-offset-1 
+                flex justify-content-between align-items-center
+                mb-3 mt-4">
+                    <h2 class="consulta-container__title">Funções </h2>
+                    <div>
+                        <p-button label="VOLTAR" icon="pi pi-directions-alt" [routerLink]="''"
+                            styleClass="p-button-outlined p-button-secondary mr-3"></p-button>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </header>
+    <div class="l-main-grid">
+        <p-card styleClass="mt-3 p-reset">
+            <p-toolbar styleClass="mb-2" >
+                <div class="p-toolbar-group-left"></div>
+                <div class="p-toolbar-group-right">
+                    <button pButton class="p-button-sm" label="NOVA FUNÇÃO" icon="pi pi-plus"></button>
+                </div>
+            </p-toolbar>
+
+            <p-table #tableFuncao [value]="funcoes" responsiveLayout="scroll"
+                styleClass="p-datatable-gridlines p-datatable-striped  p-datatable-sm-custom" [paginator]="true"
+                [showCurrentPageReport]="true"
+                currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} registros" [rows]="5"
+                [rowsPerPageOptions]="[5,10,20,30]" [rowHover]="true">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 30%" class="text-center">
+                            Nome
+                        </th>
+                        <th class="text-center" style="width: 15%">
+                            Sigla
+                        </th>
+                        <th class="text-center" style="width: 40%">Descrição</th>
+                        <th class="text-center" style="width: 15%">Ações</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-funcao>
+                    <tr>
+                        <td class="text-center">{{funcao.nome}}</td>
+                        <td class="text-center">{{funcao.sigla}}</td>
+                        <td>{{funcao.descricao}}</td>
+                        <td class="text-center">
+                            <div class="flex justify-content-center align-items-center">
+                                <a style="cursor: pointer;">
+                                    <button pTooltip="Detalhar" pButton icon="pi pi-info-circle"
+                                        class="p-button-raised p-button-text primary mr-2"></button>
+                                    <button pTooltip="Editar" pButton icon="pi pi-pencil"
+                                        class="p-button-raised p-button-text p-button-success mr-2"></button>
+                                    <button pTooltip="Excluir" pButton icon="pi pi-trash"
+                                        class="p-button-raised p-button-text p-button-danger"></button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td [attr.colspan]="4" class="emptyTableMessage">
+                            Nenhuma função encontrada
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-card>
+    </div>
+</section>
