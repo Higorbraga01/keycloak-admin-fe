@@ -24,7 +24,7 @@ export class UsuarioFiltroComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      username: this.fb.control(null),
+      userName: this.fb.control(null),
       firstName: this.fb.control(null),
       lastName: this.fb.control(null),
       email: this.fb.control(null),
@@ -34,7 +34,7 @@ export class UsuarioFiltroComponent implements OnInit {
 
   atLeastOneFieldRequired(control: AbstractControl): {[key: string]: any} | null {
       if (
-        control.get('username').value ||
+        control.get('userName').value ||
         control.get('firstName').value ||
         control.get('lastName').value ||
         control.get('email').value
