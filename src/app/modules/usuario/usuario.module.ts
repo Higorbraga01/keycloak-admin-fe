@@ -34,13 +34,15 @@ import {InputMaskModule} from 'primeng/inputmask';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UsuarioConsultaComponent } from './containers/usuario-consulta/usuario-consulta.component';
 import { UsuarioTableComponent } from './components/usuario-table/usuario-table.component';
+import { UsuarioFiltroComponent } from './components/usuario-filtro/usuario-filtro.component';
 
 
 @NgModule({
   declarations: [
     UsuarioConsultaContainerComponent,
     UsuarioConsultaComponent,
-    UsuarioTableComponent
+    UsuarioTableComponent,
+    UsuarioFiltroComponent
   ],
   imports: [
     CommonModule,

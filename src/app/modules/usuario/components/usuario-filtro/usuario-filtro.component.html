@@ -1,0 +1,133 @@
+<div class="wrapper" shrdClickOutside (clickOutside)="onClickOutside()">
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-filter"
+    class="p-button-secondary p-button-text p-button-sm"
+    (click)="togglePanelFiltro()"
+    label="FILTROS"
+  ></button>
+
+  <div
+    class="p-card--absolute"
+    [ngClass]="{ 'p-card--hidden': isHidden, 'p-card--show': !isHidden }"
+  >
+    <button
+      pButton
+      type="button"
+      icon="pi pi-times"
+      class="p-button-rounded p-button-secondary p-button-panel-close"
+      (click)="isHidden = true"
+    ></button>
+    <p-card>
+      <form
+        class="p-formgrid p-grid p-fluid"
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+      >
+        <div class="p-field p-col-12">
+          <div class="field">
+            <label for="username1" class="block">Nome de usuário</label>
+            <input
+              id="username1"
+              type="username"
+              aria-describedby="username1-help"
+              pInputText
+              formControlName="username"
+              pInputText pTooltip="Filtro por cpf"
+              placeholder="Cpf"
+              tooltipPosition="bottom"
+              tooltipEvent="focus"
+              (onShow)="toggleLockMode()"
+              (onHide)="toggleLockMode()"
+              />
+        </div>
+        </div>
+
+        <div class="p-field p-col-12">
+          <div class="field">
+            <label for="nome" class="block">Nome</label>
+            <input
+              id="nome"
+              type="username"
+              aria-describedby="nome-help"
+              pInputText
+              formControlName="firstName"
+              pInputText
+              pTooltip="Filtro por nome"
+              placeholder="Nome"
+              tooltipPosition="bottom"
+              tooltipEvent="focus"
+              (onShow)="toggleLockMode()"
+              (onHide)="toggleLockMode()"
+              />
+        </div>
+        </div>
+
+        <div class="p-field p-col-12">
+          <div class="field">
+            <label for="sigla" class="block">Sigla Organização</label>
+            <input
+              id="sigla"
+              type="username"
+              aria-describedby="sigla-help"
+              pInputText
+              formControlName="lastName"
+              pInputText
+              pTooltip="Filtro por sigla da organização"
+              placeholder="Sigla Organização"
+              tooltipPosition="bottom"
+              tooltipEvent="focus"
+              (onShow)="toggleLockMode()"
+              (onHide)="toggleLockMode()"
+              />
+        </div>
+        </div>
+
+
+        <div class="p-field p-col-12">
+          <div class="field">
+            <label for="email" class="block">Email</label>
+            <input
+              id="email"
+              type="username"
+              aria-describedby="email-help"
+              pInputText
+              formControlName="email"
+              pInputText
+              pTooltip="Filtro por email"
+              placeholder="Email"
+              tooltipPosition="bottom"
+              tooltipEvent="focus"
+              (onShow)="toggleLockMode()"
+              (onHide)="toggleLockMode()"
+              />
+        </div>
+        </div>
+
+        <div class="p-col-6 p-mt-3">
+          <button
+            pButton
+            pRipple
+            type="button"
+            [disabled]="form.invalid || isButtonDisabled"
+            label="LIMPAR"
+            class="p-button-text"
+            (click)="onClear()"
+          ></button>
+        </div>
+
+        <div class="p-col-6 p-mt-3">
+          <button
+            pButton
+            pRipple
+            type="submit"
+            [disabled]="form.invalid || isButtonDisabled"
+            label="FILTRAR"
+          ></button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</div>
