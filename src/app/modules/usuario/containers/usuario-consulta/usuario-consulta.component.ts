@@ -23,7 +23,6 @@ export class UsuarioConsultaComponent implements OnInit {
 
   handleFilterEvent(formValue: any) {
     this.loading.start();
-    console.log(formValue)
       this.userService
         .buscarUsuariosPorRealm(formValue)
         .subscribe((res) => {
