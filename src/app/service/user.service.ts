@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { User } from '../models/user.model';
@@ -34,13 +34,25 @@ export class UserService {
       roles: ['regra1', 'regra2']
     };
   }
+  removeEmptyFields(data: any): void {
+    Object.keys(data).forEach(
+      (key) =>
+        (data[key] === null ||
+          data[key] === '' ||
+          data[key] === undefined ||
+          data[key].length === 0) &&
+        delete data[key]
+    );
+  }
 
   getCurrentUser(): Observable<any> {
     return of(this._user);
     //return this.http.get<any>(`${this.endpoint}/user`);
   }
 
-  buscarUsuariosPorRealm(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB`);
+  buscarUsuariosPorRealm(filters: any = {}): Observable<any[]> {
+    this.removeEmptyFields(filters);
+    const searchParams = new HttpParams({ fromObject: filters });
+    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB`, {params: searchParams});
   }
 }

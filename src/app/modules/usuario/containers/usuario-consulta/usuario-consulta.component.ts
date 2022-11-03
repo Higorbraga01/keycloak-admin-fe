@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
+import { LoadingBarService } from 'src/app/shared/services/loading-bar.service';
 
 @Component({
   selector: 'app-usuario-consulta',
@@ -7,9 +8,10 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./usuario-consulta.component.scss']
 })
 export class UsuarioConsultaComponent implements OnInit {
+
   data: any[];
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private loading: LoadingBarService,) { }
 
   ngOnInit(): void {
     this.userService
@@ -18,5 +20,16 @@ export class UsuarioConsultaComponent implements OnInit {
         (res) => this.data = res
       );
   }
+
+  handleFilterEvent(formValue: any) {
+    this.loading.start();
+    console.log(formValue)
+      this.userService
+        .buscarUsuariosPorRealm(formValue)
+        .subscribe((res) => {
+          this.data = res;
+          this.loading.end();
+        });
+    }
 
 }

@@ -3,23 +3,13 @@
     <p-toolbar styleClass="mb-2">
       <div class="p-toolbar-group-left">
         <div class="mr-2">
-          <app-usuario-filtro></app-usuario-filtro>
+          <app-usuario-filtro
+          (formValue)="handleFilterEvent($event)"
+          >
+          </app-usuario-filtro>
         </div>
       </div>
       <div class="p-toolbar-group-right">
-        <h1>botão</h1>
-        <!-- <button
-          type="button"
-          pButton
-          pRipple
-          icon="pi pi-file-excel"
-          (click)="exportExcel()"
-          [disabled]="_actionDisable"
-          class="p-button-success mr-2"
-          label="EXPORTAR DADOS EXCEL"
-          pTooltip="Exporta somente os dados exibidos na tabela"
-          tooltipPosition="bottom"
-        ></button> -->
       </div>
     </p-toolbar>
     <app-usuario-table
