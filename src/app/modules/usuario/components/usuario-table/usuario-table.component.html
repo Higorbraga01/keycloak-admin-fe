@@ -1,5 +1,10 @@
 <p-table
 [value]="data"
+[paginator]="true"
+[rows]="5"
+[showCurrentPageReport]="true"
+currentPageReportTemplate="Mostrando {first} até {last} de {totalRecords} registros"
+[rowsPerPageOptions]="[5,10,30]"
 styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm-custom p-datatable p-component p-datatable-responsive-stack">
   <ng-template pTemplate="header">
       <tr>
