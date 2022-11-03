@@ -5,6 +5,7 @@ import { AuthGuard } from 'src/auth/public-api';
 import {environment} from '../../../environments/environment';
 import { UsuarioConsultaContainerComponent } from './containers/usuario-consulta-container/usuario-consulta-container.component';
 import { UsuarioConsultaComponent } from './containers/usuario-consulta/usuario-consulta.component';
+import { UsuarioDetalheContainerComponent } from './containers/usuario-detalhe-container/usuario-detalhe-container.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,15 @@ export const routes: Routes = [
         component: UsuarioConsultaComponent,
       }
     ],
+  },
+  {
+    path: 'detalhe',
+    component: UsuarioDetalheContainerComponent,
+    data: {
+      roles: []
+    },
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
   },
   {
     path: '**',

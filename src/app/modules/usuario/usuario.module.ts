@@ -35,6 +35,7 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { UsuarioConsultaComponent } from './containers/usuario-consulta/usuario-consulta.component';
 import { UsuarioTableComponent } from './components/usuario-table/usuario-table.component';
 import { UsuarioFiltroComponent } from './components/usuario-filtro/usuario-filtro.component';
+import { UsuarioDetalheContainerComponent } from './containers/usuario-detalhe-container/usuario-detalhe-container.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UsuarioFiltroComponent } from './components/usuario-filtro/usuario-filt
     UsuarioConsultaContainerComponent,
     UsuarioConsultaComponent,
     UsuarioTableComponent,
-    UsuarioFiltroComponent
+    UsuarioFiltroComponent,
+    UsuarioDetalheContainerComponent
   ],
   imports: [
     CommonModule,

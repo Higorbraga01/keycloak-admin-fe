@@ -1,0 +1,87 @@
+<section class="l-usuario-detalhe-container" xmlns="http://www.w3.org/1999/html">
+  <header>
+    <div class="l-usuario-detalhe-container__header">
+      <div class="l-main-grid">
+        <div class="col-12 xl-10 col-offset-1"></div>
+        <div
+          class="
+            l-usuario-detalhe-container__title-wrapper
+            col-12
+            xl-10
+            flex
+            align-items-center
+            justify-content-between
+            mb-3
+          "
+        >
+          <div>
+            <h2 class="l-usuario-detalhe-container__title ml-3">
+              Pessoa - Detalhe
+            </h2>
+          </div>
+          <div>
+            <p-button
+              label="VOLTAR"
+              icon="pi pi-directions-alt"
+              [routerLink]="'/efetivo'"
+              styleClass="p-button-outlined p-button-secondary mr-3"
+            ></p-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="l-main-grid">
+    <p-card styleClass="mt-3">
+      <div *ngIf="blocked"  class="custom-skeleton p-p-4">
+        <p-skeleton width="100%" height="640px"></p-skeleton>
+      </div>
+      <p-tabView styleClass="tabview-custom">
+        <p-tabPanel>
+            <ng-template pTemplate = "header">
+                <i class="pi pi-user mr-2"></i>
+                <span>Dados pessoais</span>
+            </ng-template>
+            <div *ngIf="!blocked" class="formgrid grid">
+              <div class="col-2">
+                <label>Nome completo</label>
+                <div>
+                  nome
+                </div>
+              </div>
+              <div class="col-2">
+                <label>Organizacao</label>
+                <div >
+                  Organização
+                </div>
+              </div>
+              <div class="col-2 mt-2">
+                <label>Nome de usuário</label>
+                <div>
+                  CPF
+                </div>
+              </div>
+              <div class="col-2">
+                <label>Email</label>
+                <div>
+                  Email
+                </div>
+              </div>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Header II">
+            <ng-template pTemplate = "header">
+                <i class="pi pi-calendar mr-2"></i>
+                <span>Reengajamentos</span>
+            </ng-template>
+            <div class="col-12 flex mt-2 p-0">
+              <div class="col-12">
+                <div>
+                </div>
+              </div>
+              </div>
+        </p-tabPanel>
+    </p-tabView>
+    </p-card>
+  </div>
+</section>
