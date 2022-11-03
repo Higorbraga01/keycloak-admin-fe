@@ -12,7 +12,11 @@ export class UsuarioConsultaComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.buscarUsuariosPorRealm().subscribe((res) => this.data = res);
+    this.userService
+      .buscarUsuariosPorRealm()
+      .subscribe(
+        (res) => this.data = res
+      );
   }
 
 }

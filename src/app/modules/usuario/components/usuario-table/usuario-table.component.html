@@ -3,32 +3,32 @@
 styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm-custom p-datatable p-component p-datatable-responsive-stack">
   <ng-template pTemplate="header">
       <tr>
-          <th class="text-center">ID</th>
+          <th class="text-center">Nome completo</th>
+          <th class="text-center">Organização</th>
           <th class="text-center">Nome de Usuário</th>
           <th class="text-center">Email</th>
-          <th class="text-center">Organização</th>
-          <th class="text-center">Nome Completo</th>
           <th class="text-center">Ações</th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-user>
       <tr>
           <td>
-            {{ user?.id}}
+            {{ user?.firstName}}
+          </td>
+          <td>
+            {{ user?.lastName }}
           </td>
           <td>
             {{ user?.username }}
           </td>
           <td>
-            {{ user?.email }}
+           {{ user?.email ? user.email: "N/A" }}
           </td>
           <td>
-           {{ user?.lastName }}
-          </td>
-          <td>
-            {{user?.firstName }}
-          </td>
-          <td>
+            <div class="flex justify-content-center">
+              <button pButton type="button" label="Editar" class="p-button-outlined">
+              </button>
+            </div>
           </td>
       </tr>
   </ng-template>
