@@ -67,18 +67,80 @@
         <p-tabPanel header="Header II">
           <ng-template pTemplate="header">
             <i class="pi pi-calendar mr-2"></i>
-            <span>Permissões</span>
+            <span>Permissões gerais</span>
           </ng-template>
           <div class="col-12 flex mt-2 p-0">
             <div class="col-12">
               <p-pickList
                 sourceHeader="Permissões disponíveis"
-                targetHeader="Permissões"
+                targetHeader="Possuídas"
                 [source]="avaliableRoles"
                 [target]="userRoles"
                 [responsive]="true"
-                [sourceStyle]="{ height: '30rem' }"
-                [targetStyle]="{ height: '30rem' }"
+                [sourceStyle]="{ height: '10rem' }"
+                [targetStyle]="{ height: '10rem' }"
+                [dragdrop]="true"
+                (onMoveToTarget)="updateRole($event)"
+                (onMoveToSource)="removeRole($event)"
+                (onMoveAllToTarget)="updateRole($event)"
+                (onMoveAllToSource)="removeRole($event)"
+                filterBy="name"
+              >
+                <ng-template let-role pTemplate="item">
+                  <div>
+                    {{ role.name }}
+                  </div>
+                </ng-template>
+              </p-pickList>
+              <div></div>
+            </div>
+          </div>
+        </p-tabPanel>
+        <p-tabPanel header="Header III">
+          <ng-template pTemplate="header">
+            <i class="pi pi-calendar mr-2"></i>
+            <span>Permissões por sistema</span>
+          </ng-template>
+          <div class="col-12 grid">
+            <div class="col-12">
+              <label>Selecione um sistema (Client)</label>
+            </div>
+            <div class="col-12">
+              <p-dropdown
+                appendTo="body"
+                [options]="clients"
+                optionLabel="clientid"
+                optionValue="id"
+                [filter]="true"
+                filterBy="clientid"
+                placeholder="Selecione um sistem"
+                class="p-inputtext-sm"
+                [virtualScroll]="true"
+                [itemSize]="35"
+                (onChange)="handleClientSelect($event.value)"
+              >
+                <ng-template let-acao pTemplate="item">
+                  <div *ngIf="acao.isDeleted">
+                    <div>{{ acao.codigo }} - INATIVO</div>
+                  </div>
+
+                  <div *ngIf="!acao.isDeleted">
+                    <div>{{ acao.codigo }}</div>
+                  </div>
+                </ng-template>
+              </p-dropdown>
+            </div>
+          </div>
+          <div class="col-12 flex mt-2 p-0">
+            <div class="col-12" *ngIf="clientSelected">
+              <p-pickList
+                sourceHeader="Permissões disponíveis"
+                targetHeader="Possuídas"
+                [source]="avaliableRoles"
+                [target]="userRoles"
+                [responsive]="true"
+                [sourceStyle]="{ height: '10rem' }"
+                [targetStyle]="{ height: '10rem' }"
                 [dragdrop]="true"
                 (onMoveToTarget)="updateRole($event)"
                 (onMoveToSource)="removeRole($event)"

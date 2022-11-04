@@ -10,11 +10,16 @@ import { LoadingBarService } from 'src/app/shared/services/loading-bar.service';
   styleUrls: ['./usuario-detalhe-container.component.scss'],
 })
 export class UsuarioDetalheContainerComponent implements OnInit {
+handleClientSelect(arg0: any) {
+throw new Error('Method not implemented.');
+}
   public id: string;
   public blocked: boolean = true;
   public user: any;
   public userRoles: any[] = [];
   public avaliableRoles: any[] = [];
+  public clients: any[] = []
+  public clientSelected: boolean = true;
 
   constructor(
     private loading: LoadingBarService,
