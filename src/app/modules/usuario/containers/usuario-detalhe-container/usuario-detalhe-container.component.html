@@ -23,7 +23,7 @@
             <p-button
               label="VOLTAR"
               icon="pi pi-directions-alt"
-              [routerLink]="'/efetivo'"
+              [routerLink]="'/usuario/listagem'"
               styleClass="p-button-outlined p-button-secondary mr-3"
             ></p-button>
           </div>
@@ -46,25 +46,25 @@
               <div class="col-2">
                 <label>Nome completo</label>
                 <div>
-                  nome
+                  {{user?.firstName}}
                 </div>
               </div>
               <div class="col-2">
                 <label>Organizacao</label>
                 <div >
-                  Organização
+                  {{user?.lastName}}
                 </div>
               </div>
               <div class="col-2 mt-2">
                 <label>Nome de usuário</label>
                 <div>
-                  CPF
+                  {{user?.username}}
                 </div>
               </div>
               <div class="col-2">
                 <label>Email</label>
                 <div>
-                  Email
+                  {{user?.email}}
                 </div>
               </div>
           </div>

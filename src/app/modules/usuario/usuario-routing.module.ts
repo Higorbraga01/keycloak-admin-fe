@@ -24,7 +24,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'detalhe',
+    path: ':id/detalhe',
     component: UsuarioDetalheContainerComponent,
     data: {
       roles: []

@@ -31,8 +31,13 @@ styleClass="p-datatable-gridlines p-datatable-striped p-datatable-sm-custom p-da
           </td>
           <td>
             <div class="flex justify-content-center">
-              <button pButton type="button" label="Editar" class="p-button-outlined">
-              </button>
+              <button
+              pTooltip="Detalhes"
+              pButton
+              icon="pi pi-info-circle"
+              routerLink="/usuario/{{ user?.id }}/detalhe"
+              class="p-button-raised p-button-text primary mr-2"
+            ></button>
             </div>
           </td>
       </tr>

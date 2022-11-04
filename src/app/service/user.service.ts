@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private _user: User;
@@ -29,9 +29,9 @@ export class UserService {
       organizacao: {
         nome: 'Organização',
         sigla: 'ORG',
-        cdOrg: '1234567'
+        cdOrg: '1234567',
       },
-      roles: ['regra1', 'regra2']
+      roles: ['regra1', 'regra2'],
     };
   }
   removeEmptyFields(data: any): void {
@@ -53,6 +53,12 @@ export class UserService {
   buscarUsuariosPorRealm(filters: any = {}): Observable<any[]> {
     this.removeEmptyFields(filters);
     const searchParams = new HttpParams({ fromObject: filters });
-    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB`, {params: searchParams});
+    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB`, {
+      params: searchParams,
+    });
+  }
+
+  buscarUsuariosPorId(id: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB/user/${id}`);
   }
 }
