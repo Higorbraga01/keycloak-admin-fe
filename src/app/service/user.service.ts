@@ -58,7 +58,7 @@ export class UserService {
     });
   }
 
-  buscarUsuariosPorId(id: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.endpoint}user/realm/FAB/user/${id}`);
+  buscarUsuariosPorId(id: string): Observable<any> {
+    return this.http.get<any>(`${this.endpoint}user/realm/FAB/user/${id}`);
   }
 }

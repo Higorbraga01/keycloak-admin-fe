@@ -9,4 +9,3 @@ export const environment = {
   FRONT_URL: 'http://localhost:4200/controle-acesso',
   SHOW_LOGGING_ROUTES: false,
 };
-

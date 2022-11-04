@@ -1,22 +1,17 @@
-<section class="l-usuario-detalhe-container" xmlns="http://www.w3.org/1999/html">
+<section
+  class="l-usuario-detalhe-container"
+  xmlns="http://www.w3.org/1999/html"
+>
   <header>
     <div class="l-usuario-detalhe-container__header">
       <div class="l-main-grid">
         <div class="col-12 xl-10 col-offset-1"></div>
         <div
-          class="
-            l-usuario-detalhe-container__title-wrapper
-            col-12
-            xl-10
-            flex
-            align-items-center
-            justify-content-between
-            mb-3
-          "
+          class="l-usuario-detalhe-container__title-wrapper col-12 xl-10 flex align-items-center justify-content-between mb-3"
         >
           <div>
             <h2 class="l-usuario-detalhe-container__title ml-3">
-              Pessoa - Detalhe
+              Usuário - Detalhe
             </h2>
           </div>
           <div>
@@ -33,55 +28,75 @@
   </header>
   <div class="l-main-grid">
     <p-card styleClass="mt-3">
-      <div *ngIf="blocked"  class="custom-skeleton p-p-4">
+      <div *ngIf="blocked" class="custom-skeleton p-p-4">
         <p-skeleton width="100%" height="640px"></p-skeleton>
       </div>
       <p-tabView styleClass="tabview-custom">
         <p-tabPanel>
-            <ng-template pTemplate = "header">
-                <i class="pi pi-user mr-2"></i>
-                <span>Dados pessoais</span>
-            </ng-template>
-            <div *ngIf="!blocked" class="formgrid grid">
-              <div class="col-2">
-                <label>Nome completo</label>
-                <div>
-                  {{user?.firstName}}
-                </div>
+          <ng-template pTemplate="header">
+            <i class="pi pi-user mr-2"></i>
+            <span>Informações</span>
+          </ng-template>
+          <div *ngIf="!blocked" class="formgrid grid">
+            <div class="col-2">
+              <label>Nome completo</label>
+              <div>
+                {{ user?.firstName }}
               </div>
-              <div class="col-2">
-                <label>Organizacao</label>
-                <div >
-                  {{user?.lastName}}
-                </div>
+            </div>
+            <div class="col-2">
+              <label>Organizacao</label>
+              <div>
+                {{ user?.lastName }}
               </div>
-              <div class="col-2 mt-2">
-                <label>Nome de usuário</label>
-                <div>
-                  {{user?.username}}
-                </div>
+            </div>
+            <div class="col-2 mt-2">
+              <label>Nome de usuário</label>
+              <div>
+                {{ user?.username }}
               </div>
-              <div class="col-2">
-                <label>Email</label>
-                <div>
-                  {{user?.email}}
-                </div>
+            </div>
+            <div class="col-2">
+              <label>Email</label>
+              <div>
+                {{ user?.email }}
               </div>
+            </div>
           </div>
         </p-tabPanel>
         <p-tabPanel header="Header II">
-            <ng-template pTemplate = "header">
-                <i class="pi pi-calendar mr-2"></i>
-                <span>Reengajamentos</span>
-            </ng-template>
-            <div class="col-12 flex mt-2 p-0">
-              <div class="col-12">
-                <div>
-                </div>
-              </div>
-              </div>
+          <ng-template pTemplate="header">
+            <i class="pi pi-calendar mr-2"></i>
+            <span>Permissões</span>
+          </ng-template>
+          <div class="col-12 flex mt-2 p-0">
+            <div class="col-12">
+              <p-pickList
+                sourceHeader="Permissões disponíveis"
+                targetHeader="Permissões"
+                [source]="avaliableRoles"
+                [target]="userRoles"
+                [responsive]="true"
+                [sourceStyle]="{ height: '30rem' }"
+                [targetStyle]="{ height: '30rem' }"
+                [dragdrop]="true"
+                (onMoveToTarget)="updateRole($event)"
+                (onMoveToSource)="removeRole($event)"
+                (onMoveAllToTarget)="updateRole($event)"
+                (onMoveAllToSource)="removeRole($event)"
+                filterBy="name"
+              >
+                <ng-template let-role pTemplate="item">
+                  <div>
+                    {{ role.name }}
+                  </div>
+                </ng-template>
+              </p-pickList>
+              <div></div>
+            </div>
+          </div>
         </p-tabPanel>
-    </p-tabView>
+      </p-tabView>
     </p-card>
   </div>
 </section>
