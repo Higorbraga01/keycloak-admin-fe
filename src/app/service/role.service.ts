@@ -25,11 +25,24 @@ export class RoleService {
     return this.http.get<any[]>(`${this.endpoint}role/realm/FAB/user/${id}`);
   }
 
+  buscarRolesUsuarioClient(realmName: string, userId: string, clientId: string) {
+    return this.http.get<any[]>(
+      `${this.endpoint}role/realm/${realmName}/user/${userId}/client/${clientId}`
+    );
+  }
+
   buscarRolesDisponveisUsuarioRealm(id: string) {
     return this.http.get<any[]>(
       `${this.endpoint}role/avaliable/realm/FAB/user/${id}`
     );
   }
+
+  buscarRolesDisponiveisUsuarioClient(realmName: string, userId: string, clientId: string) {
+    return this.http.get<any[]>(
+      `${this.endpoint}role/avaliable/realm/${realmName}/user/${userId}/client/${clientId}`
+    );
+  }
+
 
   adicionarRealmRolesUser(userId: string, roles: any[]) {
     return this.http.post<any[]>(
@@ -41,6 +54,25 @@ export class RoleService {
   removerRealmRolesUser(userId: string, roles: any[]) {
     return this.http.delete<any[]>(
       `${this.endpoint}role/realm/FAB/user/${userId}`,
+      {
+        body: roles,
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+        })
+      }
+    );
+  }
+
+  adicionarClientRolesUser(realmName: string, userId: string, clientId: string, roles: any[]) {
+    return this.http.post<any[]>(
+      `${this.endpoint}role/realm/${realmName}/user/${userId}/client/${clientId}`,
+      roles
+    );
+  }
+
+  removerClientRolesUser(realmName: string, userId: string, clientId: string, roles: any[]) {
+    return this.http.delete<any[]>(
+      `${this.endpoint}role/realm/${realmName}/user/${userId}/client/${clientId}`,
       {
         body: roles,
         headers: new HttpHeaders({
