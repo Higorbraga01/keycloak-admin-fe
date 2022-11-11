@@ -15,10 +15,10 @@ export class UsuarioDetalheContainerComponent implements OnInit {
   public blocked: boolean = true;
   public user: any;
   public userRoles: any[] = [];
-  public userClientRoles: any [] = [];
+  public userClientRoles: any[] = [];
   public avaliableRoles: any[] = [];
   public avaliableClientRoles: any[] = [];
-  public clients: any[] = []
+  public clients: any[] = [];
   public clientId: string;
   public clientSelected: boolean = true;
 
@@ -43,7 +43,9 @@ export class UsuarioDetalheContainerComponent implements OnInit {
       this.roleService
         .buscarRolesDisponveisUsuarioRealm(this.id)
         .subscribe((avaliableRoles) => (this.avaliableRoles = avaliableRoles));
-      this.clientService.buscarClientsDoRealm("FAB").subscribe((res) => this.clients = res);
+      this.clientService
+        .buscarClientsDoRealm('FAB')
+        .subscribe((res) => (this.clients = res));
       this.loading.end();
       this.blocked = false;
     }
@@ -57,7 +59,7 @@ export class UsuarioDetalheContainerComponent implements OnInit {
 
   removeRole(event: any) {
     const rolesToBeRemoved: any[] = [];
-    rolesToBeRemoved.push(...event.items)
+    rolesToBeRemoved.push(...event.items);
     this.roleService
       .removerRealmRolesUser(this.id, rolesToBeRemoved)
       .subscribe();
@@ -65,27 +67,32 @@ export class UsuarioDetalheContainerComponent implements OnInit {
 
   updateClientRole(event: any) {
     this.roleService
-      .adicionarClientRolesUser("FAB",this.id, this.clientId, this.userClientRoles)
+      .adicionarClientRolesUser(
+        'FAB',
+        this.id,
+        this.clientId,
+        this.userClientRoles
+      )
       .subscribe();
   }
 
   removeClientRole(event: any) {
     const rolesToBeRemoved: any[] = [];
-    rolesToBeRemoved.push(...event.items)
+    rolesToBeRemoved.push(...event.items);
     this.roleService
-      .removerClientRolesUser("FAB",this.id, this.clientId, rolesToBeRemoved)
+      .removerClientRolesUser('FAB', this.id, this.clientId, rolesToBeRemoved)
       .subscribe();
   }
 
   handleClientSelect(clientId: any) {
     this.clientId = clientId;
     this.roleService
-      .buscarRolesDisponiveisUsuarioClient("FAB", this.id, this.clientId)
+      .buscarRolesDisponiveisUsuarioClient('FAB', this.id, this.clientId)
       .subscribe((rolesDisponiveis) => {
         this.avaliableClientRoles = rolesDisponiveis;
-    })
+      });
     this.roleService
-      .buscarRolesUsuarioClient("FAB", this.id, clientId)
-      .subscribe((res) => this.userClientRoles  = res);
-    }
+      .buscarRolesUsuarioClient('FAB', this.id, clientId)
+      .subscribe((res) => (this.userClientRoles = res));
+  }
 }
